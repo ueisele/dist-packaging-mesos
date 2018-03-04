@@ -15,6 +15,6 @@ function build_mesos() {
 }
 
 if [ "${BASH_SOURCE[0]}" == "$0" ]; then
-    #prepare
+    prepare
     build_mesos "$@"
 fi

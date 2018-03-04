@@ -8,6 +8,7 @@ RUN apt-get update && \
         build-essential python-dev python-six python-virtualenv libcurl4-openssl-dev libsasl2-dev libsasl2-modules maven libapr1-dev libsvn-dev zlib1g-dev && \
     apt-get autoremove -y && \
     apt-get clean
+RUN gem install fpm    
 
 ENV VERSION=1.5.0 MAKEFLAGS=-j8 MAINTAINER="Uwe Eisele <uwe.eisele@online.de>"
 WORKDIR /mesos-deb-packaging
