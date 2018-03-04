@@ -1,5 +1,6 @@
 tmp
 mesos*.deb
+mesos*.sha256
 dist.tgz
 *.rpm
 *.egg
