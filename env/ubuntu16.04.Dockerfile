@@ -6,8 +6,8 @@ RUN apt-get update && \
         openjdk-8-jdk \
         build-essential python-dev python-six python-virtualenv libcurl4-openssl-dev libsasl2-dev libsasl2-modules maven libapr1-dev libsvn-dev zlib1g-dev && \
     apt-get autoremove -y && \
-    apt-get clean
-RUN gem install fpm    
+    apt-get clean && \
+    gem install fpm    
 
 ADD dist.tar.gz /work
 WORKDIR /work

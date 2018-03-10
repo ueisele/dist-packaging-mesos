@@ -1,4 +1,4 @@
-# Mesos Debian packaging
+# Mesos Distribution Packaging
 
 Build scripts to create a Mesos Debian package with [FPM](https://github.com/jordansissel/fpm) for simple installation in a cluster.
 
