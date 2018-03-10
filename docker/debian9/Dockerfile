@@ -11,5 +11,5 @@ RUN apt-get update && \
 RUN gem install fpm    
 
 ENV VERSION=1.5.0 MAKEFLAGS=-j8 MAINTAINER="Uwe Eisele <uwe.eisele@online.de>"
-WORKDIR /mesos-deb-packaging
-CMD (cd mesos-repo && git clean -df && git clean -dfx && cd .. && ./build_mesos --repo https://git-wip-us.apache.org/repos/asf/mesos.git?ref=${VERSION})
+WORKDIR /work/dist-packaging-mesos
+CMD ./build_mesos --repo https://git-wip-us.apache.org/repos/asf/mesos.git?ref=${VERSION} --src-dir /work/mesos-repo
