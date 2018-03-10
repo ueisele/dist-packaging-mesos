@@ -3,7 +3,7 @@ FROM centos:7
 COPY yum-wandisco-svn.repo /etc/yum.repos.d/wandisco-svn.repo
 
 RUN yum update -y && \
-    yum install -y tar wget git && \
+    yum install -y tar wget git which && \
     wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo && \
     yum install -y epel-release && \
     yum groupinstall -y "Development Tools" && \
