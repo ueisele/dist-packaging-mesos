@@ -359,9 +359,12 @@ function deb_ {
     os_tag=${linux//[\/.]/} # convert "ubuntu/14.04" to "ubuntu1404"
     pkgname="mesos_${version}-${build_version}.${os_tag}_${arch}"
   fi
+
   if [ ! -e "$this"/release/ ] ; then mkdir "$this"/release/ ; fi 
   rm -f "$this"/release/"$pkgname".deb
+  rm -f "$this"/release/"$pkgname".deb.sha256
   fpm_ "${opts[@]}" -p "$this"/release/"$pkgname".deb
+  sha256sum "$this"/release/"$pkgname".deb | awk '{ print $1 }' > "$this"/release/"$pkgname".deb.sha256
 }
 
 function rpm_ {
@@ -385,9 +388,12 @@ function rpm_ {
   if $rename; then
     pkgname="mesos-${version}-${build_version}.${os_tag}.${arch}"
   fi
+
   if [ ! -e "$this"/release/ ] ; then mkdir "$this"/release/ ; fi 
   rm -f "$this"/release/"$pkgname".rpm
+  rm -f "$this"/release/"$pkgname".rpm.sha256
   fpm_ "${opts[@]}" -p "$this"/release/"$pkgname".rpm
+  sha256sum "$this"/release/"$pkgname".rpm | awk '{ print $1 }' > "$this"/release/"$pkgname".rpm.sha256
 }
 
 # Doesn't actually work the same as the others...
