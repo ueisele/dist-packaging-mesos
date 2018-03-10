@@ -1,7 +1,8 @@
 tmp
 mesos*.deb
 mesos*.sha256
-dist.tgz
+dist.tar.gz
 *.rpm
 *.egg
 mesos-repo
+release/

@@ -1,5 +1,4 @@
 FROM debian:stretch
-LABEL maintainer="uwe.eisele@online.de"
 
 RUN apt-get update && \
     apt-get upgrade -y && \ 
@@ -10,6 +9,6 @@ RUN apt-get update && \
     apt-get clean
 RUN gem install fpm    
 
-ENV VERSION=1.5.0 MAKEFLAGS=-j8 MAINTAINER="Uwe Eisele <uwe.eisele@online.de>"
-WORKDIR /work/dist-packaging-mesos
-CMD ./build_mesos --repo https://git-wip-us.apache.org/repos/asf/mesos.git?ref=${VERSION} --src-dir /work/mesos-repo
+ADD dist.tar.gz /work
+WORKDIR /work
+ENTRYPOINT [ "./build_mesos" ]

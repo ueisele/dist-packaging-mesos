@@ -359,9 +359,9 @@ function deb_ {
     os_tag=${linux//[\/.]/} # convert "ubuntu/14.04" to "ubuntu1404"
     pkgname="mesos_${version}-${build_version}.${os_tag}_${arch}"
   fi
-
-  rm -f "$this"/"$pkgname".deb
-  fpm_ "${opts[@]}" -p "$this"/"$pkgname".deb
+  if [ ! -e "$this"/release/ ] ; then mkdir "$this"/release/ ; fi 
+  rm -f "$this"/release/"$pkgname".deb
+  fpm_ "${opts[@]}" -p "$this"/release/"$pkgname".deb
 }
 
 function rpm_ {
@@ -385,8 +385,9 @@ function rpm_ {
   if $rename; then
     pkgname="mesos-${version}-${build_version}.${os_tag}.${arch}"
   fi
-  rm -f "$this"/"$pkgname".rpm
-  fpm_ "${opts[@]}" -p "$this"/"$pkgname".rpm
+  if [ ! -e "$this"/release/ ] ; then mkdir "$this"/release/ ; fi 
+  rm -f "$this"/release/"$pkgname".rpm
+  fpm_ "${opts[@]}" -p "$this"/release/"$pkgname".rpm
 }
 
 # Doesn't actually work the same as the others...
